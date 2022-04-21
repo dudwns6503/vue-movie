@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # vue-movie
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# vue-movie
+>>>>>>> 0a5c415e34e8c3a850a12f5220659da077215b6c
