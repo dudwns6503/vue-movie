@@ -19,6 +19,11 @@ const routes = [
     name: 'search',
     component: () => import('@/views/MovieSearch.vue'),
   },
+  {
+    path: '/movieinfo/:id',
+    name: 'movieInfo',
+    component: () => import('@/views/MovieInfo.vue'),
+  },
 ];
 
 const router = new VueRouter({

@@ -12,4 +12,10 @@ function getMovie(movieName) {
   );
 }
 
-export { fetchMovieList, getMovie };
+function getMovieByID(movieID) {
+  return axios.get(
+    `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${movieID}`,
+  );
+}
+
+export { fetchMovieList, getMovie, getMovieByID };

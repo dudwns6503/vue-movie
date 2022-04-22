@@ -2,7 +2,9 @@
   <section class="wrapper">
     <div class="searchMovie">
       <div class="searchMovie_image">
-        <img :src="movie.Poster" />
+        <router-link :to="{ name: 'movieInfo', params: { id: movie.imdbID } }">
+          <img :src="movie.Poster" />
+        </router-link>
       </div>
       <div class="searchMovie_desc">
         <h1>{{ movie.Title }}</h1>
@@ -14,6 +16,11 @@
 
 <script>
 export default {
+  computed: {
+    GoToMovieInformation() {
+      return '/movieInfo';
+    },
+  },
   props: {
     movie: {
       type: Object,

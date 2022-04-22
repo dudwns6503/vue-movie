@@ -11,7 +11,7 @@
           id="input-1"
           v-model="form.movieName"
           type="text"
-          placeholder="Enter MovieName"
+          placeholder="영어 제목으로 검색해주세요."
           required
         ></b-form-input>
       </b-form-group>
@@ -50,10 +50,14 @@ export default {
         const movieName = this.form.movieName;
         const { data } = await getMovie(movieName);
         console.log(data);
-        this.searchedMovie = data;
+        if (data.Error) {
+          alert('검색하신 제목의 영화가 없습니다.');
+        } else {
+          this.searchedMovie = data;
+        }
         this.isLoading = false;
       } catch (error) {
-        alert('검색결과가 없습니다.');
+        alert('요청에서 에러가 발생했습니다.');
       }
     },
     onReset(event) {
