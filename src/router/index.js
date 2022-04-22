@@ -14,12 +14,11 @@ const routes = [
     name: 'NotFoundPage',
     component: () => import('@/views/NotFoundPage.vue'),
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
-  // },
+  {
+    path: '/search',
+    name: 'search',
+    component: () => import('@/views/MovieSearch.vue'),
+  },
 ];
 
 const router = new VueRouter({
