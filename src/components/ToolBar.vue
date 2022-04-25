@@ -1,10 +1,10 @@
 <template>
   <header>
-    <a href="/" class="logo">Vue<span>Movie</span></a>
+    <a href="/" class="logo">Vue<span class="title">Movie</span></a>
     <ul>
       <li><router-link to="/">Home</router-link></li>
       <li><router-link to="/search">Search</router-link></li>
-      <li><router-link to="/contact">Contact</router-link></li>
+      <li><router-link to="/about">About</router-link></li>
     </ul>
   </header>
 </template>
@@ -27,17 +27,20 @@ header {
 }
 
 header .logo {
-  color: #42b883;
+  color: #258d5e;
   font-weight: 700;
   text-decoration: none;
   font-size: 2em;
   letter-spacing: 0.2px;
 }
 
-header .logo span {
+.title {
   color: #fff;
 }
 
+.title:hover {
+  color: aqua;
+}
 header ul {
   display: flex;
   justify-content: center;

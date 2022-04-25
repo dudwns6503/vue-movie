@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'movieHome',
+    name: 'MovieHome',
     component: () => import('@/views/MovieHome.vue'),
   },
   {
@@ -16,13 +16,18 @@ const routes = [
   },
   {
     path: '/search',
-    name: 'search',
+    name: 'Search',
     component: () => import('@/views/MovieSearch.vue'),
   },
   {
     path: '/movieinfo/:id',
-    name: 'movieInfo',
+    name: 'MovieInfo',
     component: () => import('@/views/MovieInfo.vue'),
+  },
+  {
+    path: '/about',
+    name: 'AboutMe',
+    component: () => import('@/views/AboutMe.vue'),
   },
 ];
 
