@@ -1,6 +1,9 @@
 <template>
   <section>
-    <div class="movie_info">
+    <div class="spinner" v-if="isLoading">
+      <b-spinner variant="light"></b-spinner>
+    </div>
+    <div class="movie_info" v-else>
       <div class="movie_image">
         <img :src="movie.Poster" />
       </div>
@@ -10,7 +13,7 @@
         <p class="release">
           {{ movie.Released }} | {{ movie.Runtime }} | {{ movie.Country }}
         </p>
-        <p class="plot">{{ movie.Plot }}</p>
+        <p class="plot">{{ movie.Plot.slice(0, 143) }}...</p>
         <h4>Director</h4>
         <p class="director">{{ movie.Director }}</p>
         <h5>Actors</h5>
@@ -52,6 +55,7 @@ export default {
       ratings: [],
       tomato: 0,
       metacritic: 0,
+      isLoading: false,
     };
   },
   created() {
@@ -60,6 +64,7 @@ export default {
   },
   methods: {
     async movieListById() {
+      this.isLoading = true;
       const MovieID = this.$route.params.id;
       const { data } = await getMovieById(MovieID);
       this.movie = data;
@@ -71,6 +76,7 @@ export default {
           this.metacritic = this.ratings[i].Value;
         }
       }
+      this.isLoading = false;
     },
     initRatings() {
       this.ratings = [];
@@ -87,6 +93,12 @@ section {
   width: 100%;
   height: 79vh;
   top: 18vh;
+}
+
+section .spinner {
+  position: fixed;
+  left: 48vw;
+  top: 48vh;
 }
 
 section .movie_info {
