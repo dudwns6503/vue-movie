@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/search',
     name: 'Search',
-    component: () => import('@/views/MovieSearch.vue'),
+    component: () => import('@/views/MovieSearchPage.vue'),
   },
   {
     path: '/movieinfo/:id',

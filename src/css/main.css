@@ -5,8 +5,12 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  min-height: 100vh;
+  min-height: 100%;
   background: linear-gradient(#2b1055, #7597de);
 }
 

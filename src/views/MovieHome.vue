@@ -6,10 +6,13 @@
     <div v-else>
       <ul>
         <li v-for="movie in movies" :key="movie.id">
-          <a :href="movie.url">
-            <img :src="movie.medium_cover_image" class="movie_image" />
-          </a>
-          <span class="movie_desc">
+          <router-link
+            :to="{ name: 'MovieInfo', params: { id: movie.imdb_code } }"
+          >
+            <img :src="movie.medium_cover_image" />
+          </router-link>
+
+          <span>
             <p>제목: {{ movie.title }}</p>
             <p>개봉년도: {{ movie.year }}년</p>
             <p>평점: {{ movie.rating }}점</p>
@@ -49,35 +52,50 @@ export default {
 section {
   position: relative;
   width: 100%;
-  height: 100vh;
-  padding: 110px 0;
+  height: 75vh;
+  top: 18vh;
 }
 
-.spinner {
-  position: absolute;
-  left: 50%;
-  top: 50%;
+section .spinner {
+  position: fixed;
+  left: 48vw;
+  top: 48vh;
 }
 
-div ul {
+section div {
+  width: 100%;
+  height: 100%;
+}
+
+section div ul {
   display: flex;
-  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-li {
-  list-style: none;
-  padding-right: 5px;
+section div ul li {
+  width: 100%;
+  height: 100%;
+  padding-right: 3vw;
 }
 
-.movie_image {
-  width: 40vh;
-  height: 40vh;
+section div ul li a {
+  display: inline-block;
+  margin-bottom: 3vh;
 }
 
-.movie_desc {
-  background: #000;
+section div ul li:hover a img {
+  filter: brightness(1.2);
+}
+
+section div ul li span {
+  display: inline-block;
   color: #fff;
   font-size: 1rem;
-  line-height: 1.5em;
+  line-height: 1rem;
+}
+
+section div ul li:hover span {
+  color: #f07305;
 }
 </style>

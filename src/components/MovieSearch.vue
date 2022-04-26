@@ -1,5 +1,5 @@
 <template>
-  <section class="wrapper">
+  <section>
     <b-form
       @submit.prevent="searchMovieByName"
       @reset="onReset"
@@ -16,18 +16,23 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Search</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
+      <b-button type="submit" variant="primary" class="btn">Search</b-button>
+      <b-button type="reset" variant="danger" class="btn">Reset</b-button>
     </b-form>
+
     <div class="spinner" v-if="isLoading">
       <b-spinner variant="light"></b-spinner>
     </div>
-    <MovieListBySearch :movie="searchedMovie" v-else></MovieListBySearch>
+    <MovieListBySearch
+      :movies="searchedMovies"
+      v-else
+      class="list"
+    ></MovieListBySearch>
   </section>
 </template>
 
 <script>
-import { getMovie } from '@/api/index';
+import { getMovieList } from '@/api/index';
 import MovieListBySearch from '@/components/MovieListBySearch.vue';
 export default {
   components: {
@@ -39,7 +44,7 @@ export default {
         movieName: '',
       },
       show: true,
-      searchedMovie: {},
+      searchedMovies: [],
       isLoading: false,
     };
   },
@@ -48,12 +53,12 @@ export default {
       try {
         this.isLoading = true;
         const movieName = this.form.movieName;
-        const { data } = await getMovie(movieName);
-        console.log(data);
+        const { data } = await getMovieList(movieName);
+        console.log(data.Search);
         if (data.Error) {
           alert('검색하신 제목의 영화가 없습니다.');
         } else {
-          this.searchedMovie = data;
+          this.searchedMovies = data.Search;
         }
         this.isLoading = false;
       } catch (error) {
@@ -75,20 +80,39 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
+section {
+  position: relative;
+  width: 100%;
+  height: 79vh;
+  top: 18vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }
 
-.form {
+section .form {
+  position: relative;
+  left: 33vw;
+  display: flex;
+  height: 6vh;
+}
+
+section .form #input-group-1 {
+  width: 30vw;
+  height: 100%;
+}
+
+section .form .btn {
+  height: 100%;
+}
+
+section .spinner {
+  position: fixed;
+  left: 48vw;
+  top: 48vh;
+}
+
+section .list {
   position: absolute;
-  width: 50%;
+  height: 63vh;
   top: 20%;
-}
-
-.spinner {
-  position: absolute;
 }
 </style>

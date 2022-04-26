@@ -1,21 +1,17 @@
 import axios from 'axios';
 
-const OMDB_API_KEY = 'fa19d096';
+const api_key = process.env.VUE_APP_OMDB_API_KEY;
 
 function fetchMovieList() {
   return axios.get('https://yts.mx/api/v2/list_movies.json');
 }
 
-function getMovie(movieName) {
-  return axios.get(
-    `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${movieName}`,
-  );
+function getMovieList(movieName) {
+  return axios.get(`https://www.omdbapi.com/?apikey=${api_key}&s=${movieName}`);
 }
 
-function getMovieByID(movieID) {
-  return axios.get(
-    `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${movieID}`,
-  );
+function getMovieById(movieId) {
+  return axios.get(`http://www.omdbapi.com/?apikey=${api_key}&i=${movieId}`);
 }
 
-export { fetchMovieList, getMovie, getMovieByID };
+export { fetchMovieList, getMovieList, getMovieById };

@@ -27,14 +27,14 @@ export default {};
 
 <style scoped>
 section {
+  position: absolute;
   width: 340px;
   padding: 30px;
+  margin: 120px auto;
   background-color: #fff;
-  margin: 120px auto 0;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  position: fixed;
-  right: 37%;
+  left: 35%;
 }
 
 section article.profile {
