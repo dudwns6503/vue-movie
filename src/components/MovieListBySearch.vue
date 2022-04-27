@@ -10,7 +10,7 @@
         </router-link>
       </div>
       <div class="searchMovie_desc">
-        <h1>{{ movie.Title }}</h1>
+        <h1>{{ movie.Title.slice(0, 30) }}</h1>
       </div>
     </article>
   </section>

@@ -95,6 +95,6 @@ section div ul li span {
 }
 
 section div ul li:hover span {
-  color: #f07305;
+  color: #f2ea0ff1;
 }
 </style>
