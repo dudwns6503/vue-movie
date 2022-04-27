@@ -5,7 +5,9 @@
       <h1>Kim YonegJun</h1>
       <h2>FrontEnd Developer</h2>
 
-      <a href="https://github.com/dudwns6503" class="btnView">VIEW Github</a>
+      <a href="https://github.com/dudwns6503" target="blank" class="btnView"
+        >VIEW Github
+      </a>
     </article>
 
     <ul class="contact">
