@@ -54,7 +54,6 @@ export default {
         this.isLoading = true;
         const movieName = this.form.movieName;
         const { data } = await getMovieList(movieName);
-        console.log(data.Search);
         if (data.Error) {
           alert('검색하신 제목의 영화가 없습니다.');
         } else {

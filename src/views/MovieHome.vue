@@ -40,7 +40,6 @@ export default {
     async getMovieList() {
       this.isLoading = true;
       const response = await fetchMovieList();
-      console.log(response.data.data.movies);
       this.movies = response.data.data.movies;
       this.isLoading = false;
     },
