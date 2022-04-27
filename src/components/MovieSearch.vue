@@ -20,9 +20,7 @@
       <b-button type="reset" variant="danger" class="btn">Reset</b-button>
     </b-form>
 
-    <div class="spinner" v-if="isLoading">
-      <b-spinner variant="light"></b-spinner>
-    </div>
+    <LoadingSpinner v-if="isLoading" class="spinner"></LoadingSpinner>
     <MovieListBySearch
       :movies="searchedMovies"
       v-else
@@ -34,9 +32,12 @@
 <script>
 import { getMovieList } from '@/api/index';
 import MovieListBySearch from '@/components/MovieListBySearch.vue';
+import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
+
 export default {
   components: {
     MovieListBySearch,
+    LoadingSpinner,
   },
   data() {
     return {
@@ -101,12 +102,6 @@ section .form #input-group-1 {
 
 section .form .btn {
   height: 100%;
-}
-
-section .spinner {
-  position: fixed;
-  left: 48vw;
-  top: 48vh;
 }
 
 section .list {

@@ -1,8 +1,6 @@
 <template>
   <section>
-    <div class="spinner" v-if="isLoading">
-      <b-spinner variant="light"></b-spinner>
-    </div>
+    <LoadingSpinner v-if="isLoading" class="spinner"></LoadingSpinner>
     <div class="movie_info" v-else>
       <div class="movie_image">
         <img :src="movie.Poster" />
@@ -48,7 +46,12 @@
 
 <script>
 import { getMovieById } from '@/api/index';
+import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
+
 export default {
+  components: {
+    LoadingSpinner,
+  },
   data() {
     return {
       movie: {},
@@ -100,17 +103,11 @@ section {
   top: 18vh;
 }
 
-section .spinner {
-  position: fixed;
-  left: 48vw;
-  top: 48vh;
-}
-
 section .movie_info {
   width: 100%;
   height: 100%;
   display: flex;
-  padding: 0 20vw;
+  padding: 0 17vw;
 }
 
 section .movie_info .movie_image {

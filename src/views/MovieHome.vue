@@ -1,8 +1,6 @@
 <template>
   <section>
-    <div class="spinner" v-if="isLoading">
-      <b-spinner variant="light"></b-spinner>
-    </div>
+    <LoadingSpinner v-if="isLoading" class="spinner"></LoadingSpinner>
     <div v-else>
       <ul>
         <li v-for="movie in movies" :key="movie.id">
@@ -26,7 +24,12 @@
 
 <script>
 import { fetchMovieList } from '@/api/index';
+import LoadingSpinner from '@/components/common/LoadingSpinner.vue';
+
 export default {
+  components: {
+    LoadingSpinner,
+  },
   data() {
     return {
       movies: [],
@@ -53,12 +56,6 @@ section {
   width: 100%;
   height: 75vh;
   top: 18vh;
-}
-
-section .spinner {
-  position: fixed;
-  left: 48vw;
-  top: 48vh;
 }
 
 section div {
