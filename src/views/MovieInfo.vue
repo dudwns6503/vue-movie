@@ -64,19 +64,24 @@ export default {
   },
   methods: {
     async movieListById() {
-      this.isLoading = true;
-      const MovieID = this.$route.params.id;
-      const { data } = await getMovieById(MovieID);
-      this.movie = data;
-      this.ratings = this.movie.Ratings;
-      for (let i = 0; i < this.ratings.length; i++) {
-        if (this.ratings[i].Source == 'Rotten Tomatoes') {
-          this.tomato = this.ratings[i].Value;
-        } else if (this.ratings[i].Source == 'Metacritic') {
-          this.metacritic = this.ratings[i].Value;
+      try {
+        this.isLoading = true;
+        const MovieID = this.$route.params.id;
+        const { data } = await getMovieById(MovieID);
+        this.movie = data;
+        this.ratings = this.movie.Ratings;
+        for (let i = 0; i < this.ratings.length; i++) {
+          if (this.ratings[i].Source == 'Rotten Tomatoes') {
+            this.tomato = this.ratings[i].Value;
+          } else if (this.ratings[i].Source == 'Metacritic') {
+            this.metacritic = this.ratings[i].Value;
+          }
         }
+        this.isLoading = false;
+      } catch (error) {
+        alert('요청하신 영화에 대한 정보가 없습니다.');
+        history.back();
       }
-      this.isLoading = false;
     },
     initRatings() {
       this.ratings = [];
